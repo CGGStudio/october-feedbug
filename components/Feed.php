@@ -66,7 +66,7 @@ class Feed extends ComponentBase
         $urlHeaders = @get_headers($url);
 
         if ($urlHeaders && (strpos($urlHeaders[0], '200'))) {
-            $xml = simplexml_load_file($url);
+            $xml = @simplexml_load_file($url);
 
             for ($i=0; $i < $this->maxItems; $i++) {
                 $items[$i] = $xml->channel->item[$i];
