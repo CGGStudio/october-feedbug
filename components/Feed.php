@@ -5,18 +5,6 @@ use lang;
 
 class Feed extends ComponentBase
 {
-    /**
-     * A collection of feed posts to display
-     * @var Collection
-     */
-    public $feedList;
-
-    /**
-     * Message to display when there are no messages.
-     * @var string
-     */
-    public $noFeedMessage;
-
     public function componentDetails()
     {
         return [
@@ -38,10 +26,11 @@ class Feed extends ComponentBase
                 'title'       => 'mrmlnc.feedbug::lang.component.settings.target',
                 'description' => 'mrmlnc.feedbug::lang.component.settings.target_description',
                 'type'        => 'string',
-                'default'     => 'http://...'
+                'default'     => 'http://'
             ],
             'maxItems' => [
                 'title'             => 'mrmlnc.feedbug::lang.component.settings.max_feed',
+                'description'       => 'mrmlnc.feedbug::lang.component.settings.max_feed_description',
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'validationMessage' => 'mrmlnc.feedbug::lang.component.settings.max_feed_validation',

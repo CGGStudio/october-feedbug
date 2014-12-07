@@ -14,6 +14,7 @@ return [
             'target' => 'URL RSS feed',
             'target_description' => 'The address of the website from which you need to take an RSS feed.',
             'max_feed' => 'Records per list',
+            'max_feed_description' => 'Number of items (records) in the RSS feed that you want to display.',
             'max_feed_validation' => 'Invalid format of the records per list value',
             'feed_no_items' => 'No items in feed message',
             'feed_no_items_description' => 'Message to display in the feed list in case if there are no items. This property is used by the default component partial.'
