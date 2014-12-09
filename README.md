@@ -1,34 +1,35 @@
 # FeedBug
 
-Простой способ отобразить свою или чужую RSS ленту на страницах сайта построенного на основе [OctoberCMS](#link).
+An easy way to display your own or other's RSS feed on websites, based on [OctoberCMS](http://octobercms.com/).
 
 ### Available options
 
- * **Название ленты** — Название RSS ленты, которое можно использовать как заголовок на странице вывода.
- * **URL RSS ленты** — Адрес сайта, с которого необходимо взять RSS ленту. Полный адрес до RSS ленты.
- * **Записей в списке** — Количество элементов (записей) в ленте, которые необходимо вывести.
- * **Сообщение пустой ленты** — Сообщение, отображаемое в списке ленты в случае, если нет элементов. Это свойство используется по умолчанию компонентом при выводе ленты.
+ * **Feed name** — The name of RSS feed, that may be used as the title for page output.
+ * **URL of RSS feed** — Website address from where RSS feed will be taken. The full address until RSS feed.
+ * **Notes in list** — The number of elements (notes) to display. 
+ * **Blank feed message** — Message to display in case there are no elements. This property is used by default by the component in feed output. 
 
-# Documentation
+## Documentation
 
-Небольшая документация, включающая в себя следующие разделы:
+Small documentation, included the following sections:
 
  * [Quickstart guide](#quickstart-guide)
  * [Implementing front-end pages](#implementing-front-end-pages)
+ * [Errors control](#errors-control)
 
 ### Quickstart guide
 
- * Перейдите на вкладу **System** в OctoberCMS и установите плагин, используя код `mrmlnc.feedbug`.
- * После завершения установки нового компонента, он будет отображаться в OctoberCMS на вкладке **CMS → Components**. У вас есть возможность добавить его на определённые страницы сайта, или добавить его в макет, тем самым заставив компонент появляться на всех страницах, которые используют этот макет. Какой бы вы не выбрали путь, инструкция ниже будет одинаковой.
- * Откройте *страницы* или *макеты*, и добавьте компонент **feedbug**.
- * Добавьте небольшой код в любом месте *страницы / макета*: `{% component 'feedReport' %}`. Убедитесь, что используется правильный псевдоним, если вы его ещё не изменили, то это должно быть `'feedReport'`.
- * Это всё. Теперь у вас есть рабочий компонент `feedReport` на ваших страницах. Компонент не имеет никаких внешних зависимостей, поэтому вам не придется беспокоиться ни о чем другом.
+ * Go to System tab in OctoberCMS and install the plugin, using `mrmlnc.feedbug` code
+ * After you install the new component, it will be displayed in OctoberCMS in **CMS → Components tab**. You have an opportunity to add it on particular website pages or add it to a model, so you will make this component appear on every pages that use this model. No matter what way you will choose - the instruction below will be the same.
+ * Open pages or models, and add **feedbug** component.
+ * Add a small code in any part of the *page / model*: `{% component 'feedReport' %}`. Make sure that you use the right pseudonym, if you didn't change it yet, it should be `'feedReport'`.
+ * That's all. Now you have a working component feedReport on your pages. The component has no external dependency, so you have nothing to worry about.
 
 ### Implementing front-end pages
 
-Для настройки отображения компонента можно использовать шаблон по умолчанию: `{% component 'feedReport' %}`.
+To set up the component display you may use model by default: `{% component 'feedReport' %}`.
 
-Если вы хотите настроить дизайн компонента под себя:
+If you want to customize the design: 
 
 ````
 {% if feedReport.feed.items %}
@@ -45,22 +46,26 @@
 {% endif %}
 ````
 
-**Подробнее:**
+**Details:**
 
- * **feedReport** — Название компонента.
- * **feed** — Коллекция данных, доступных для вывода
-  * **feed.name** — Имя ленты, которые задаётся при добавлении компонента.
-  * **feed.items** — Содержимое указанной ленты при добавлении компонента.
-  * items → **item.title** — Содержимое тега `<title>` в RSS ленте.
-  * items → **item.description** — Содержимое тега `<description>` в RSS ленте.
+ * **feedReport** — Name of the component.
+ * **feed** — Data collection, available to display
+  * **feed.name** — name of the feed, that specifies after adding the component. 
+  * **feed.items** — the contention of this feed with the addition of the component.
+   * *items* → **item.title** — Contention of the <title> tag in RSS feed.
+   * *items* → **item.description** — Contention of the <description> tag in RSS feed
 
-Можно использовать все функции шаблонизатора [TWIG](http://twig.sensiolabs.org/doc/filters/index.html), например, тут используется фильт `|striptags`, который убирает все SGML/XML теги из текста и заменяет двойные (тройные и т.д.) пробелы на один.
+You may use all functions of the template system [TWIG](http://twig.sensiolabs.org/doc/filters/index.html), for example, `|striptags` filter that deletes all SGML/XML tags from the text and replaces double (triple, etc) spaces to one. 
 
-# License
+### Errors control
+
+Don't worry - an error in RSS feed address, disconnection of the feed or unavailability of donor website will be detected and processed.
+
+## License
 
 MIT.
 
-# Changelog
+## Changelog
 
  * **0.1.0**
   * Beta version of feedbug

@@ -3,25 +3,25 @@
 return [
     'plugin' => [
         'name' => 'FeedBug',
-        'description' => 'Grabber RSS feed.'
+        'description' => 'RSS feed grabber.'
     ],
     'component' => [
-        'name' => 'Grabber Feed',
-        'description' => 'Create an RSS widget for your website.',
+        'name' => 'RSS feed grabber',
+        'description' => 'Creation of RSS feed grabber for your website.',
         'settings' => [
-            'name' => 'Name feed',
-            'name_description' => 'Name for RSS feed.',
-            'target' => 'URL RSS feed',
-            'target_description' => 'The address of the website from which you need to take an RSS feed.',
-            'max_feed' => 'Records per list',
-            'max_feed_description' => 'Number of items (records) in the RSS feed that you want to display.',
-            'max_feed_validation' => 'Invalid format of the records per list value',
-            'feed_no_items' => 'No items in feed message',
-            'feed_no_items_description' => 'Message to display in the feed list in case if there are no items. This property is used by the default component partial.'
+            'name' => 'The name of your feed',
+            'name_description' => 'The name of RSS feed that may be used as a title for page output.',
+            'target' => 'URL of RSS feed',
+            'target_description' => 'Website address from where RSS feed will be taken. Full address until RSS feed.',
+            'max_feed' => 'Notes in list',
+            'max_feed_description' => 'Number of items (notes) that you want to display.',
+            'max_feed_validation' => 'Invalid value format. Only positive integers.',
+            'feed_no_items' => 'Blank feed message',
+            'feed_no_items_description' => 'Message to display in case there are no elements. This Property is used by default by the component in feed output.'
         ],
         'error' => [
-            'title' => 'No items in feed',
-            'description' => "Check the feed URL. Perhaps you made a mistake or RSS feed doesn't exist any more."
+            'title' => 'RSS feed has no items',
+            'description' => 'Check the URL-address of feed. May be you made a mistake or RSS feed does not exist.'
         ]
     ]
 ];
