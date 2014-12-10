@@ -48,7 +48,6 @@ class Feed extends ComponentBase
     public function onRun()
     {
         $this->prepareVars();
-
         $this->feed = $this->page['feed'] = $this->loadFeedList();
     }
 
@@ -65,6 +64,9 @@ class Feed extends ComponentBase
         $url = $this->targetUrl;
         $urlHeaders = @get_headers($url);
 
+        /**
+         * Check if url is exist (HTTP:200) or not (HTTP:404)
+         */
         if ($urlHeaders && (strpos($urlHeaders[0], '200'))) {
             $xml = @simplexml_load_file($url);
 
@@ -73,8 +75,12 @@ class Feed extends ComponentBase
             }
         }
 
+        /**
+         * Error Output ($items -> null or empty)
+         */
         if (!empty($items)) {
             $list = $items;
+            $nameList = $this->property('feedName');
         }
         else {
             $list = [
@@ -84,9 +90,9 @@ class Feed extends ComponentBase
                     'description' => Lang::get('mrmlnc.feedbug::lang.component.error.description')
                 ]
             ];
-        }
 
-        $nameList = ($urlHeaders) ? $this->property('feedName') : $this->noFeedMessage;
+            $nameList = $this->noFeedMessage;
+        }
 
         return [
             'name' => $nameList,

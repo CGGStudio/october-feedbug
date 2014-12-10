@@ -27,11 +27,22 @@ Small documentation, included the following sections:
 
 ### Implementing front-end pages
 
+**Sample RSS:**
+
+````XML
+<item>
+  <title>Title</title>
+  <link>Link</link>
+  <description>Description</description>
+  <pubDate>Date</pubDate>
+</item>
+````
+
 To set up the component display you may use model by default: `{% component 'feedReport' %}`.
 
 If you want to customize the design: 
 
-````
+````PHP
 {% if feedReport.feed.items %}
   <h1>{{ feedReport.feed.name }}</h1>
   <ul>
@@ -49,11 +60,12 @@ If you want to customize the design:
 **Details:**
 
  * **feedReport** — Name of the component.
- * **feed** — Data collection, available to display
+ * **feed** — Data collection, available to display:
   * **feed.name** — name of the feed, that specifies after adding the component. 
-  * **feed.items** — the contention of this feed with the addition of the component.
+  * **feed.items** — the contention of this feed with the addition of the component:
    * *items* → **item.title** — Contention of the <title> tag in RSS feed.
-   * *items* → **item.description** — Contention of the <description> tag in RSS feed
+   * *items* → **item.description** — Contention of the <description> tag in RSS feed.
+   * *items* → **item.more** — Other tags (`item.link`, `item.pubDate` and more).
 
 You may use all functions of the template system [TWIG](http://twig.sensiolabs.org/doc/filters/index.html), for example, `|striptags` filter that deletes all SGML/XML tags from the text and replaces double (triple, etc) spaces to one. 
 
@@ -69,3 +81,4 @@ MIT.
 
  * **0.1.0**
   * Beta version of feedbug
+ 
