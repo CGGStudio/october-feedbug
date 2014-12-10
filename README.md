@@ -81,4 +81,7 @@ MIT.
 
  * **0.1.0**
   * Beta version of feedbug
+
+ * **1.0.0**
+  * First release
  
